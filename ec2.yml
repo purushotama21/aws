@@ -1,0 +1,21 @@
+Resources:
+  WebserverInstance:
+    Type: AWS::EC2::Instance
+    Properties: 
+      AvailabilityZone: us-east-1a
+      ImageId: ami-0a8b4cd432b1c3063
+      InstanceType: t2.micro
+      KeyName: pr_rao_407_Nvirginia
+      SubnetId: subnet-0ed2085156c2f149b
+      Tags: 
+       - Key : Name
+         Value: Webserver
+      UserData: 
+        Fn::Base64: !Sub |
+                #!/bin/bash
+                sudo yum install update
+                sudo yum install httpd -y
+                sudo cd /var/www/html/
+                sudo echo "<html><body><h1>Terraform-Ec2</h1><p><b>i have spinup an ec2 instace using terraform</b> </p></body></html>"> terraform.html
+                sudo systemctl start httpd
+                
