@@ -7,6 +7,10 @@ Resources:
       InstanceType: t2.micro
       KeyName: pr_rao_407_Nvirginia
       SubnetId: subnet-0ed2085156c2f149b
+      BlockDeviceMappings:
+        - DeviceName: /dev/sda1
+          Ebs:
+            VolumeSize: 8a
       Tags: 
        - Key : Name
          Value: Webserver
@@ -18,4 +22,3 @@ Resources:
                 sudo cd /var/www/html/
                 sudo echo "<html><body><h1>Terraform-Ec2</h1><p><b>i have spinup an ec2 instace using terraform</b> </p></body></html>"> terraform.html
                 sudo systemctl start httpd
-                
